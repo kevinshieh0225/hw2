@@ -58,7 +58,6 @@ body{
 	width:800px;
 	height:350px;
 	background-image:url('pic/p2/Png-05.png');
-	z-index:-1;
   left:17%;
   margin-top:-2.5%;
 }

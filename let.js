@@ -1,12 +1,12 @@
 $(document).ready(function(){
   var chap=0;
-
+  var choice=0;
   $("div").hide();
   $(".front_page") .fadeIn(1000);
-  setInterval(flicker,500);//迴圈閃爍，間隔1秒
+  /*setInterval(flicker,500);//迴圈閃爍，間隔1秒
   function flicker(){//閃爍函數
         $('#front_page_shine').fadeOut(1000).fadeIn(1000);
-  }
+  }*/
 
   $('body').one("click",function(){  
     $('#front_page_shine').stop().css({display:"none"});
@@ -90,11 +90,57 @@ $(document).ready(function(){
 	}
   }
   //
+  function b(){
+	  if(choice==0){
+		  $('#try1').fadeOut(500);
+		  $('#try2').fadeOut(500);
+		  $('#tryup').hide();
+		  $('#trydown').hide();
+		  $('#want').fadeIn(500);
+		  $('#no').fadeIn(500);
+		  $('#p41').fadeIn(500);
+		  $('#p42').fadeIn(500);
+	  }
+	  else if(choice==1){
+		  $('#try1').show();
+		  $('#try2').show();
+		  $('#trydown').show();
+		  $('#want').hide();
+		  $('#no').hide();
+		  $('#p41').hide();
+		  $('#p42').hide();
+	  }
+	  else if(choice==2){
+		  $('#want').hide();
+		  $('#no').hide();
+		  $('#p41').hide();
+		  $('#p42').hide();
+		  $('#win1').show();
+		  $('#win2').show();
+		  $('#win3').show();
+		  $('#windown').show();
+	  }
+	  else if(choice==3){
+		  $('#win1').fadeOut(500);
+		  $('#win2').fadeOut(500);
+		  $('#win3').fadeOut(500);
+		  $('#winup').hide();
+		  $('#windown').hide();
+		  $('#last1').fadeIn(500);
+		  $('#last2').fadeIn(500);
+	  }
+  }
+  //
   $('#want').mouseenter(function(){
     $('#rock1').show();
   });
   $('#want').mouseleave(function(){
     $('#rock1').hide();
+  });
+  $('#want').click(function(){
+    choice=2; 
+	console.log(choice);
+	b();
   });
   //
   $('#no').mouseenter(function(){
@@ -103,6 +149,40 @@ $(document).ready(function(){
   $('#no').mouseleave(function(){
     $('#rock2').hide();
   });
+  $('#no').click(function(){
+    choice=1; 
+	console.log(choice);
+	b();
+  });
+//
+  $('#trydown').mouseenter(function(){
+    $('#tryup').show();
+	$('#trydown').hide();
+  });
+  $('#tryup').mouseleave(function(){
+    $('#tryup').hide();
+	$('#trydown').show();
+  });
+  $('#tryup').click(function(){
+    choice=0; 
+	console.log(choice);
+	b();
+  });
+//
+  $('#windown').mouseenter(function(){
+    $('#winup').show();
+	$('#windown').hide();
+  });
+  $('#winup').mouseleave(function(){
+    $('#winup').hide();
+	$('#windown').show();
+  });
+  $('#winup').click(function(){
+    choice=3; 
+	console.log(choice);
+	b();
+  });
+//
 //
 });
   
